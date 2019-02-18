@@ -51,7 +51,7 @@ public class AddCategoryTests_024 {
 	public void validLoginTest() throws InterruptedException {
 		loginPOM.sendUserName("admin");
 		Thread.sleep(1000);
-		loginPOM.sendPassword("admin@123");
+		loginPOM.sendPassword("admin@1234");
 		Thread.sleep(1000);
 		loginPOM.clickLoginBtn(); 
 		Thread.sleep(1000);

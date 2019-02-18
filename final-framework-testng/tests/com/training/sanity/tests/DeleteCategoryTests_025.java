@@ -52,7 +52,7 @@ public class DeleteCategoryTests_025 {
 	public void validLoginTest() throws InterruptedException {
 		loginPOM.sendUserName("admin");
 		Thread.sleep(1000);
-		loginPOM.sendPassword("admin@123");
+		loginPOM.sendPassword("admin@1234");
 		Thread.sleep(1000);
 		loginPOM.clickLoginBtn(); 
 		Thread.sleep(3000);
@@ -72,7 +72,7 @@ public class DeleteCategoryTests_025 {
 	@Test(priority = 3)
 	public boolean isElementPresent(WebDriver driver, By by){
 		   try{
-		      driver.findElement(By.xpath("//a[contains(text(),'Category4Deletion1')]"));
+		      driver.findElement(By.linkText("Category4Deletion1"));
 		      return true;
 		      
 		   }catch(NoSuchElementException e){

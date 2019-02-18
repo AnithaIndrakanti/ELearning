@@ -30,7 +30,7 @@ private WebDriver driver;
 	private WebElement coursesCategoriesLink;
 	
     @FindBy(xpath="//a[@href='http://elearning.upskills.in/main/admin/course_category.php?category=&id=AA&action=delete']//img[@title='Delete this category']")
-    private WebElement deleteCategoryButton;
+   	private WebElement deleteCategoryButton;
 	
 	public void sendUserName(String userName) {
 		this.userName.clear();

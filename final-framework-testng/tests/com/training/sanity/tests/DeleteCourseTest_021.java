@@ -53,7 +53,7 @@ public class DeleteCourseTest_021 {
 	@Test(priority = 1)
 	public void validLoginTest() {
 		loginPOM.sendUserName("admin");
-		loginPOM.sendPassword("admin@123");
+		loginPOM.sendPassword("admin@1234");
 		loginPOM.clickLoginBtn(); 
 		screenShot.captureScreenShot("ELTC021_HomePage");
 	}

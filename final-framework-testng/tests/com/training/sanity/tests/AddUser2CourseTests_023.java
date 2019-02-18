@@ -50,7 +50,7 @@ public class AddUser2CourseTests_023 {
 	@Test(priority = 1)
 	public void validLoginTest() throws Exception {
 		loginPOM.sendUserName("admin");
-		loginPOM.sendPassword("admin@123");
+		loginPOM.sendPassword("admin@1234");
 		loginPOM.clickLoginBtn(); 
 		Thread.sleep(1000);
 		screenShot.captureScreenShot("ELTC023_Homepage");

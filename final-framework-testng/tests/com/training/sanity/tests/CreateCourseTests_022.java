@@ -51,7 +51,7 @@ public class CreateCourseTests_022 {
 	@Test(priority = 1)
 	public void validLoginTest() throws Exception {
 		loginPOM.sendUserName("admin");
-		loginPOM.sendPassword("admin@123");
+		loginPOM.sendPassword("admin@1234");
 		loginPOM.clickLoginBtn(); 
 		Thread.sleep(1000);
 		screenShot.captureScreenShot("ELTC022_Homepage");
@@ -61,8 +61,8 @@ public class CreateCourseTests_022 {
 	public void createCourseTest()throws Exception{
 		createCourse.clickAdminLink();
 		createCourse.clickCreateCourseLink();
-		createCourse.enterTitle("HelloCourse");
-		createCourse.enterCode("helc");
+		createCourse.enterTitle("HeyhiCourse");
+		createCourse.enterCode("heyic");
 		createCourse.teacherBox1();
 		createCourse.teacherBox2();
 		System.out.println("Clicked on Teacher Listbox");
@@ -79,10 +79,10 @@ public class CreateCourseTests_022 {
 		screenShot.captureScreenShot("ELTC022_CourseCreated");
 	}
 	@Test(priority=3)
-	public void assertResult() {
-	String Expected = "Course HelloCourse added";
-	String Actual = driver.findElement(By.xpath("//div[@class='alert alert-success")).getText();
-	Assert.assertEquals(Actual,Expected);
+	public void assertResult22() {
+	String Expected = "HeyCourse";
+	String Actual = driver.findElement(By.xpath("//div[@class='alert alert-success']//a[contains(text(),'HeyhiCourse')]")).getText();
+   	Assert.assertEquals(Actual,Expected);
 	System.out.println(Actual);
 	}
 }
