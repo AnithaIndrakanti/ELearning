@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
+import com.training.pom.DeleteCourse_021;
 import com.training.pom.LoginPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
@@ -20,6 +21,7 @@ public class LoginTests {
 	private WebDriver driver;
 	private String baseUrl;
 	private LoginPOM loginPOM;
+	//private DeleteCourse_021 deleteCourse;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -28,15 +30,16 @@ public class LoginTests {
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
+		
 	}
 
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		loginPOM = new LoginPOM(driver); 
+		//deleteCourse = new DeleteCourse_021(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
-		// open the browser 
 		driver.get(baseUrl);
 	}
 	
