@@ -78,6 +78,5 @@ public class DeleteCategoryTests_025 {
 		   }catch(NoSuchElementException e){
 		     return false;
 		   }
-		 	}
-	
+		   		 	}
 }
