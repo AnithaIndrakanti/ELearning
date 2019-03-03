@@ -45,6 +45,7 @@ public class ModifyUserDetailTests_051 {
 		driver.quit();
 	}
 	
+	//code of steps to login with admin rights
 	@Test(priority = 1)
 	public void validLoginTest() throws InterruptedException {
 		loginPOM.sendUserName("admin");
@@ -53,13 +54,17 @@ public class ModifyUserDetailTests_051 {
 		Thread.sleep(1000);
 		loginPOM.clickLoginBtn(); 
 		Thread.sleep(1000);
-		screenShot.captureScreenShot("ELTC024_HomePage");
+		screenShot.captureScreenShot("ELTC051_HomePage");
 	}
 		
+	//Code of steps to edit the user detail
+	//step1-8
 	@Test(priority = 2)
 	    public void editUserDetailTest() throws Exception {
 		modifyDetails.clickAdminLink();
 		modifyDetails.clickUserListLink();
+		modifyDetails.clickChooseAllOption();
+		System.out.println("ALL results per page selected");
 		modifyDetails.sendSearchtext("sunil");
 		System.out.println("Sunil entered");
 		Thread.sleep(500);
@@ -80,14 +85,7 @@ public class ModifyUserDetailTests_051 {
 		System.out.println("Updates Saved for Sunil");
 		Thread.sleep(2000);
 		screenShot.captureScreenShot("ELTC051_AfterUserUpdated");
+		modifyDetails.assertResult51();
 	}
 	
-	@Test(priority = 3)
-	public void assertResult51() {
-	String Expected = "User updated";
-	String Actual = driver.findElement(By.xpath("//div[@class='alert alert-info']")).getText();
-	Assert.assertTrue(Actual.contains(Expected));
-	System.out.println("Actual is " +Actual+ "Expected is  "+Expected);
 	}
-	
-}

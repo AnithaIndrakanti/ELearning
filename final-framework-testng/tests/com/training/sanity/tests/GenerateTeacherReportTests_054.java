@@ -49,6 +49,7 @@ public class GenerateTeacherReportTests_054 {
 		driver.quit();
 	}
 	
+	//Method to Login to Homepage using Admin credentials
 	@Test(priority = 1)
 	public void validLoginTest() throws InterruptedException {
 		loginPOM.sendUserName("admin");
@@ -59,13 +60,16 @@ public class GenerateTeacherReportTests_054 {
 		Thread.sleep(500);
 		screenShot.captureScreenShot("ELTC053_HomePage");
 	}
-		
+	
+	//Method to edit user detail 
+	//from clicking on Reporting tab in Step1
+	//till clicking on quiz icon in Step7
 	@Test(priority = 2)
 	    public void editUserDetailTest() throws Exception {
 		generateReport.clickReportingTab();
 		generateReport.clickFollowTeacherLink();
 		generateReport.sendTeacherName("manzoor");
-		System.out.println("Name Deepa entered");
+		System.out.println("Teacher name entered");
 		Thread.sleep(500);
 		generateReport.clickSubmitBtn();
 		System.out.println("Submit btn clkd");
@@ -82,6 +86,8 @@ public class GenerateTeacherReportTests_054 {
 		
 	}
 	
+	//Method to complete the Edit process 
+	//From Step 8 till step10
 	@Test(priority = 3)
     public void completeEditTest() throws Exception {
 		Robot robot = new Robot();
@@ -89,7 +95,7 @@ public class GenerateTeacherReportTests_054 {
 	      robot.keyPress(KeyEvent.VK_PAGE_DOWN);
 	    }
 		robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
-		System.out.println("PAGE DOWN clicked thrice");
+		System.out.println("PAGE DOWN clicked 5times");
 		Thread.sleep(1000);
 		generateReport.clickEmailChkBox(); 
 		System.out.println("Chkbox clicked");

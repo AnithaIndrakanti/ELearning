@@ -3,16 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.sanity.tests.CreateTrainingTests_052">
+      <class name="com.training.sanity.tests.ModifyUserDetailTests_051">
         <methods>
-          <include name="addTrainingPart1Test"/>
-          <include name="addTrainingPart2Test"/>
           <include name="setUpBeforeClass"/>
-          <include name="validLoginTest"/>
-          <include name="addCategoryTest"/>
           <include name="tearDown"/>
+          <include name="editUserDetailTest"/>
         </methods>
-      </class> <!-- com.training.sanity.tests.CreateTrainingTests_052 -->
+      </class> <!-- com.training.sanity.tests.ModifyUserDetailTests_051 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

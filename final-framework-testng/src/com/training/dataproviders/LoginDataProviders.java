@@ -19,7 +19,7 @@ public class LoginDataProviders {
 		Object[][] result = new Object[list.size()][]; 
 		int count = 0; 
 		for(LoginBean temp : list){
-			Object[]  obj = new Object[2]; 
+			Object[]  obj = new Object[9]; 
 			obj[0] = temp.getUserName(); 
 			obj[1] = temp.getPassword(); 
 			
@@ -32,7 +32,7 @@ public class LoginDataProviders {
 	
 	@DataProvider(name = "excel-inputs")
 	public Object[][] getExcelData(){
-		String fileName ="C:/Users/Naveen/Desktop/Testing.xlsx"; 
+		String fileName ="C:\\Users\\IBM_ADMIN\\Documents\\ECLIPSE\\workspace1\\GITHUB\\Test Data Anitha.xlsx"; 
 		return new ApachePOIExcelRead().getExcelContent(fileName); 
 	}
 	

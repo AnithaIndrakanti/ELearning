@@ -47,6 +47,7 @@ public class AddCategoryTests_024 {
 		driver.quit();
 	}
 	
+	//Method to login to elearning portal
 	@Test(priority = 1)
 	public void validLoginTest() throws InterruptedException {
 		loginPOM.sendUserName("admin");
@@ -58,6 +59,7 @@ public class AddCategoryTests_024 {
 		screenShot.captureScreenShot("ELTC024_HomePage");
 	}
 		
+	//Method to add Category
 	@Test(priority = 2)
 	    public void addCategoryTest() throws Exception {
 		addCategory.clickAdminLink();
@@ -72,17 +74,7 @@ public class AddCategoryTests_024 {
 		System.out.println("Category Added");
 		Thread.sleep(2000);
 		screenShot.captureScreenShot("ELTC024_AfterAddCategory");
+		addCategory.assertResult24_1();
 	}
-	
-	@Test(priority = 3)
-	public void assertResult24() {
-	String Expected = "Created";
-	//String Actual= driver.findElement(By.xpath("/html[1]/body[1]/div[1]/section[1]/div[1]/table[1]/tbody[1]/tr[14]/td[1]/a[1]")).getText();
-	String Actual = driver.findElement(By.xpath("//div[@class='alert alert-info']")).getText();
-	//Assert.assertEquals(Actual,Expected);
-	Assert.assertTrue(Actual.contains(Expected));
-	System.out.println("Actual is " +Actual+ "Expected is  "+Expected);
-	}
-	
 	
 }

@@ -48,7 +48,7 @@ public class GenerateStudentReportTests_053 {
 		Thread.sleep(1000);
 		driver.quit();
 	}
-	
+	//Code for login using admin rights
 	@Test(priority = 1)
 	public void validLoginTest() throws InterruptedException {
 		loginPOM.sendUserName("admin");
@@ -59,7 +59,7 @@ public class GenerateStudentReportTests_053 {
 		Thread.sleep(500);
 		screenShot.captureScreenShot("ELTC053_HomePage");
 	}
-		
+	//Code for steps1-7	
 	@Test(priority = 2)
 	    public void editUserDetailTest() throws Exception {
 		generateReport.clickReportingTab();
@@ -70,6 +70,7 @@ public class GenerateStudentReportTests_053 {
 		generateReport.clickSubmitBtn();
 		System.out.println("Submit btn clkd");
 		Thread.sleep(500);
+		screenShot.captureScreenShot("ELTC053_Searched student");
 		generateReport.clickArrow1();
 		System.out.println("Arrow1 clicked");
 		Thread.sleep(500);
@@ -82,44 +83,32 @@ public class GenerateStudentReportTests_053 {
 		
 	}
 	
+	//code for steps8-10
 	@Test(priority = 3)
     public void completeEditTest() throws Exception {
 		Robot robot = new Robot();
 		for(int i=0; i<5; i++) {
 	      robot.keyPress(KeyEvent.VK_PAGE_DOWN);
-	    }
+	      	    }
 		robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
-		System.out.println("PAGE DOWN clicked thrice");
+		System.out.println("PAGE DOWN clicked 5times");
 		Thread.sleep(1000);
 		generateReport.clickEmailChkBox(); 
-		System.out.println("Chkbox clicked");
+		System.out.println("Checkbox clicked");
 		Thread.sleep(500); 
-		generateReport.clickCorrectTestBtn(); Thread.sleep(500);
-		System.out.println("Correct TEST buttn clicked");
+		robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+		robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
+		generateReport.clickCorrectTestBtn(); 
+		Thread.sleep(500);
+		System.out.println("Correct TEST button clicked");
 		Thread.sleep(500);
 		screenShot.captureScreenShot("ELTC053_Alert Message_Step9");
-		/*
-		 * String Expected = "Message sent"; String Actual =
-		 * driver.findElement(By.xpath("//div[@class='alert alert-info']")).getText();
-		 * Assert.assertTrue(Actual.contains(Expected)); System.out.println("Actual is "
-		 * +Actual+ "Expected is  "+Expected);
-		 */
+		Thread.sleep(3000);
+		generateReport.asesrtResult53_1();
 		generateReport.clickCourseName(); 
 		System.out.println("CourseName clicked");
-		Thread.sleep(500);
-		Thread.sleep(100); screenShot.captureScreenShot("ELTC053_SS1");
 		Thread.sleep(2000);
-		screenShot.captureScreenShot("ELTC053_Final step");
+		screenShot.captureScreenShot("ELTC053_Course Page_LastStep");
 	   }
-	
-	
-	@Test(enabled=false) 
-	public void assertResult53() { 
-	 String Expected = "Message sent"; 
-	 String Actual = driver.findElement(By.xpath("//div[@class='alert alert-info']")).getText();
-	 Assert.assertTrue(Actual.contains(Expected)); 
-	 System.out.println("Actual is " +Actual+ "Expected is  "+Expected);
-	 }
-	
-}
+	}
 
