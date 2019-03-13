@@ -12,16 +12,15 @@ import org.testng.annotations.Test;
 
 import com.training.dataproviders.LoginDataProviders;
 import com.training.generics.ScreenShot;
-import com.training.pom.ELTD83POM;
-import com.training.pom.ELTD84POM;
+import com.training.pom.ELTD85POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class ELTD83Test {
+public class ELTD85Test {
   
 	private WebDriver driver;
 	private String baseUrl;
-	private ELTD83POM eLTD83POM;
+	private ELTD85POM eLTD85POM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 	
@@ -36,7 +35,7 @@ public class ELTD83Test {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		eLTD83POM = new ELTD83POM(driver);
+		eLTD85POM = new ELTD85POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		// open the browser
@@ -49,57 +48,76 @@ public class ELTD83Test {
 		driver.quit();
 	}
 
-	@Test(priority = 1, dataProvider = "excel-inputs", dataProviderClass = LoginDataProviders.class)
-	public void loginELTD81Test(String userName, String password,String firstName, String lastName, String email, String phone, String userName1,
+	@Test(priority = 1, dataProvider = "db-inputs", dataProviderClass = LoginDataProviders.class)
+	public void addUserELTD85Test(String userName, String password,String firstName, String lastName, String email, String phone, String userName1,
 			String password1) throws InterruptedException {
 		//Steps for Login
-		eLTD83POM.sendUserName(userName);
-		eLTD83POM.sendPassword(password);
-		eLTD83POM.clickLoginBtn();
+		eLTD85POM.sendUserName(userName);
+		eLTD85POM.sendPassword(password);
+		eLTD85POM.clickLoginBtn();
 		screenShot.captureScreenShot("userName");
 		
 		//Steps for ADD USER
-		eLTD83POM.clickAdminLink();
+		eLTD85POM.clickAdminLink();
 		Thread.sleep(500);
 		System.out.println("Administration link clicked");
-		eLTD83POM.clickAddUserLink();
+		eLTD85POM.clickAddUserLink();
 		Thread.sleep(500);
 		System.out.println("Add User link clicked");
-		eLTD83POM.sendFirstName(firstName);
+		String firstname10 = eLTD85POM.sendFirstName("manzoor10");
 		Thread.sleep(500);
 		System.out.println("Firstname entered");
-		eLTD83POM.sendLastName(lastName);
+		String lastname10 = eLTD85POM.sendLastName("mehadi10");
 		Thread.sleep(500);
 		System.out.println("Lastname entered");
-		eLTD83POM.sendEmail(email);
+		String email10 = eLTD85POM.sendEmail("manzoor10@gmail.com");
 		Thread.sleep(500);
 		System.out.println("Email entered");
-		eLTD83POM.sendPhone(phone);
+		String phone10= eLTD85POM.sendPhone("9876543210");
 		Thread.sleep(500);
 		System.out.println("Phone number entered");
-		eLTD83POM.sendUserName1(userName1);
+		String username11 = eLTD85POM.sendUserName1("manzoor10");
 		Thread.sleep(500);
 		System.out.println("login name entered");
-		eLTD83POM.clickPasswordRadio();
+		eLTD85POM.clickPasswordRadio();
 		Thread.sleep(500);
 		System.out.println("Radio button selected");
-		eLTD83POM.sendPassword1(password1);
+		String password11 = eLTD85POM.sendPassword1("password10");
 		Thread.sleep(500);
 		System.out.println("password entered");
-        eLTD83POM.selectProfile1();
+        eLTD85POM.selectProfile1();
 		Thread.sleep(500);
 		System.out.println("caret clicked");
-		eLTD83POM.selectProfile2();
+		eLTD85POM.selectProfile2();
 		Thread.sleep(3000);
 		System.out.println("Profile selected");
-		screenShot.captureScreenShot("Profile Selected TC83");
-		Thread.sleep(1000);
-		eLTD83POM.clickSubmit();
+		screenShot.captureScreenShot("Profile Selected Tc85");
+		eLTD85POM.clickSubmit();
 		Thread.sleep(1000);
 		System.out.println("Submit button clicked");
-		Thread.sleep(1000);
-        eLTD83POM.assertResult83Pass();
+		
+
+		System.out.println("Database username = ");
+		System.out.println("Database login password = ");
+		System.out.println("Database firstname = " + firstName);	
+		System.out.println("Database lastname = "+lastName);
+		System.out.println("Database email ="+email);
+		System.out.println("Database phone = "+phone);
+		System.out.println("Database username1 = "+userName1);
+		System.out.println("Database password ="+password1);
+		
+		System.out.println("Application username = "+userName);
+		System.out.println("Application login password = "+password);
+		System.out.println("Application firstname = "+firstname10);
+		System.out.println("Application lastname= "+lastname10);
+		System.out.println("Application email ="+email10);
+		System.out.println("Application phone = "+phone10);
+		System.out.println("Application username1 = "+username11);
+		System.out.println("Application password1 = "+password11);
+		
+		
+		
+		}
 		
 	}
-	
-}
+

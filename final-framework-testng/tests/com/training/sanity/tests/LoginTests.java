@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -51,8 +52,22 @@ public class LoginTests {
 	@Test
 	public void validLoginTest() {
 		loginPOM.sendUserName("admin");
-		loginPOM.sendPassword("admin@123");
+		loginPOM.sendPassword("admin@1234");
+		int width= driver.findElement(By.xpath("//input[@id='login']")).getSize().getHeight();
+		int height = driver.findElement(By.xpath("//input[@id='login']")).getSize().getWidth();
+		String value = driver.findElement(By.xpath("//input[@id='login']")).getAttribute("textboxword");
+		String valuetext = driver.findElement(By.xpath("//input[@id='login']")).getText();
+		int xaxis = driver.findElement(By.xpath("//input[@id='login']")).getLocation().x;
+		int yaxis = driver.findElement(By.xpath("//input[@id='login']")).getLocation().y;
+		 boolean usernameprsent = driver.findElement(By.xpath("//input[@id='login']")).isEnabled();
+		System.out.println("Textbox content is" + value);
+		System.out.println("Textbox content is" + valuetext);
+		System.out.println("Width is "+width);
+		System.out.println("Height is " +height);
+		System.out.println("X is"+xaxis);
+		System.out.println("Y is"+yaxis);
 		loginPOM.clickLoginBtn(); 
 		screenShot.captureScreenShot("First");
 	}
 }
+

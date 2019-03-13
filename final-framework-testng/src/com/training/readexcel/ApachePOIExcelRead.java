@@ -31,7 +31,7 @@ public class ApachePOIExcelRead {
 			XSSFWorkbook workbook = new XSSFWorkbook(file);
 
 			// Get first/desired sheet from the workbook
-			XSSFSheet sheet = workbook.getSheetAt(2);
+			XSSFSheet sheet = workbook.getSheet("TC85");
 			
 			int rowTotal = sheet.getLastRowNum();
 
@@ -71,7 +71,13 @@ public class ApachePOIExcelRead {
 							tempList1[cellCount] =cell.getStringCellValue();
 						}
 						break;
+					case Cell.CELL_TYPE_BLANK:
+						if(cell.getCellComment()==null) {
+							tempList1[cellCount] = "";
+						}
+						break;
 					}
+					
 					cellCount ++; 
 				}
 				if(tempList1 != null){

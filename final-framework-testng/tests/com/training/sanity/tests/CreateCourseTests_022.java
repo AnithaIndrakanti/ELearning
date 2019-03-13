@@ -61,7 +61,7 @@ public class CreateCourseTests_022 {
 	public void createCourseTest()throws Exception{
 		createCourse.clickAdminLink();
 		createCourse.clickCreateCourseLink();
-		createCourse.enterTitle("HeyhiCourse");
+		createCourse.enterTitle("HeyhiLoCourse");
 		createCourse.enterCode("heyic");
 		createCourse.teacherBox1();
 		createCourse.teacherBox2();

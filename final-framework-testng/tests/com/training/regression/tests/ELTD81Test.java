@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import com.training.dataproviders.LoginDataProviders;
 import com.training.generics.GenericMethods;
 import com.training.generics.ScreenShot;
-import com.training.pom.ELTD81to85_POM;
+import com.training.pom.ELTD81POM;
 import com.training.pom.LoginPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
@@ -22,7 +22,7 @@ public class ELTD81Test {
 
 	private WebDriver driver;
 	private String baseUrl;
-	private ELTD81to85_POM eLTDPOM;
+	private ELTD81POM eLTDPOM;
 	// private LoginPOM loginPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
@@ -38,7 +38,7 @@ public class ELTD81Test {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		eLTDPOM = new ELTD81to85_POM(driver);
+		eLTDPOM = new ELTD81POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		// open the browser
@@ -81,7 +81,7 @@ public class ELTD81Test {
 		System.out.println("Phone number entered");
 		eLTDPOM.sendUserName1(userName1);
 		Thread.sleep(500);
-		System.out.println("login name entered");
+		System.out.println("logiin name entered");
 		eLTDPOM.clickPasswordRadio();
 		Thread.sleep(500);
 		System.out.println("Radio button selected");
@@ -89,21 +89,34 @@ public class ELTD81Test {
 		Thread.sleep(500);
 		System.out.println("password entered");
 		eLTDPOM.selectProfile1();
-		eLTDPOM.selectProfile2();
+		//eLTDPOM.selectProfile2();
 		Thread.sleep(500);
 		System.out.println("Profile selected");
 		eLTDPOM.clickSubmit();
 		Thread.sleep(500);
 		System.out.println("Submit button clicked");
+		eLTDPOM.assertTC81_1();
 		
 		//Steps for Add Users To Course
-		eLTDPOM.clickAdminLink();
-		Thread.sleep(500);
-		System.out.println("Administration link clicked");
-		eLTDPOM.clickAddUsers2CourseLink();
-		eLTDPOM.selectUserListValue();
-		eLTDPOM.selectCourseListValue();
-		eLTDPOM.clickadd2CourseBtn();
+		
+		  eLTDPOM.clickAdminLink(); Thread.sleep(500);
+		  System.out.println("Administration link clicked");
+		  Thread.sleep(500);
+			System.out.println("Admin link clicked");
+		  eLTDPOM.clickAddUsers2CourseLink(); 
+		  Thread.sleep(500);
+			System.out.println("Course link clicked");
+		  eLTDPOM.selectUserListValue();
+		  Thread.sleep(500);
+			System.out.println("user list value selected");
+		  eLTDPOM.selectCourseListValue(); 
+		  Thread.sleep(500);
+			System.out.println("Course list value selected");
+		  eLTDPOM.clickadd2CourseBtn();
+		  System.out.println("Course button clicked");
+		  System.out.println("User added to course");
+		  eLTDPOM.assertTC81_2();
+		 
 	}
 
 }

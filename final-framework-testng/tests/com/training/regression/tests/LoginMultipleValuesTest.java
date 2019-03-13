@@ -27,7 +27,7 @@ public class LoginMultipleValuesTest {
 	@DataProvider(name="inputs")
 	public Object[][] getData() {
 		return new Object[][] {
-			{"admin", "admin@123"},
+			{"admin", "admin@1234"},
 			{"naveen", "testing@123"}
 		};
 	}

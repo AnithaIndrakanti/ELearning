@@ -3,18 +3,22 @@ package com.training.pom;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
-public class ELTD81to85_POM {
+public class ELTD85POM {
+
 	private WebDriver driver;
+	private String classname;
 
-	public ELTD81to85_POM(WebDriver driver) {
+	public ELTD85POM(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	
 
 	// WebElements for Logging In
 	@FindBy(id = "login")
@@ -28,26 +32,23 @@ public class ELTD81to85_POM {
 
 	// Methods for Login********************************
 	// Method to send Username
-	public void sendUserName(String userName) {
+	public String sendUserName(String userName) {
 		this.userName.clear();
 		this.userName.sendKeys(userName);
+		return this.userName.getAttribute("value");
 	}
 
 	// Method to send password
-	public void sendPassword(String password) {
+	public String sendPassword(String password) {
 		this.password.clear();
 		this.password.sendKeys(password);
+		return this.password.getAttribute("value");
 	}
 
 	// Method to click on Submit button
 	public void clickLoginBtn() {
 		this.loginBtn.click();
 	}
-
-	// **********************************************************************
-	// TC81
-
-	// WebElements for Adding multiple users
 
 	@FindBy(xpath = "//a[@title='Administration']")
 	private WebElement administrationLink;
@@ -76,12 +77,12 @@ public class ELTD81to85_POM {
 	@FindBy(id = "password")
 	private WebElement password1;
 
-	@FindBy(xpath = "//button[@title='Trainer']//span[@class='caret']")
+	@FindBy(xpath = "//button[@title='Learner']//span[@class='caret']")
 	private WebElement profileSelect1;
 
-	@FindBy(xpath = "//*[@id='user_add']//fieldset//div[11]//div[1]//div[1]/button//span[1]")
+	@FindBy(xpath = "//span[contains(text(),'Trainer')]") 
 	private WebElement profileSelect2;
-
+	 
 	// Click on Add button
 	@FindBy(name = "submit")
 	private WebElement addUserButton;
@@ -95,103 +96,68 @@ public class ELTD81to85_POM {
 		this.addUserLink.click();
 	}
 
-	public void sendFirstName(String firstName) {
+	public String sendFirstName(String firstName) {
 		this.firstName.clear();
 		this.firstName.sendKeys(firstName);
+		return this.firstName.getAttribute("value");
 	}
 
-	public void sendLastName(String lastName) {
+	public String sendLastName(String lastName) {
 		this.lastName.clear();
 		this.lastName.sendKeys(lastName);
-	}
+		return this.lastName.getAttribute("value");
+			}
 
-	public void sendEmail(String email) {
+	public String sendEmail(String email) {
 		this.email.clear();
 		this.email.sendKeys(email);
+		return this.email.getAttribute("value");
 	}
 
-	public void sendPhone(String phone) {
+	public String sendPhone(String phone) {
 		this.phone.clear();
 		this.phone.sendKeys(phone);
+		return this.phone.getAttribute("value");
 	}
 
-	public void sendUserName1(String userName1) {
+	public String sendUserName1(String userName1) {
 		this.loginName.clear();
 		this.loginName.sendKeys(userName1);
+		return this.loginName.getAttribute("value");
 	}
 
 	public void clickPasswordRadio() {
 		this.passwordRadio.click();
 	}
 
-	public void sendPassword1(String password1) {
+	public String sendPassword1(String password1) {
 		this.password1.clear();
 		this.password1.sendKeys(password1);
+		return this.password1.getAttribute("value");
 	}
 
 	public void selectProfile1() {
 		this.profileSelect1.click();
 	}
-
-	public void selectValueFromExcel() {
+	
+	public void selectProfile2() {
+		Actions action = new Actions(driver);
+        action.moveToElement(driver.findElement(By.xpath("//span[contains(text(),'Trainer')]"))).build().perform();
 		this.profileSelect2.click();
 	}
 
-	public void selectProfile2() {
-		this.profileSelect2.click();
+	//Method to concatenate xpath for Profile dropdown selection
+	//Split to capture value from excel//span[contains(text(),'Trainer')]
+	public void selectProfile() {
+		String before = "//ul[@class='dropdown-menu inner']//li//a//span[contains(text(),'";
+		String after = "')]";
+		String classuser = before + classname + after;
+		Actions action = new Actions(driver);
+		action.moveToElement(profileSelect2).moveToElement(driver.findElement(By.xpath(classuser))).click().build().perform();
 	}
 
 	public void clickSubmit() {
 		this.addUserButton.click();
 	}
 
-	// WebElements for "Add Users to Course" Link
-	@FindBy(xpath = "//a[contains(text(),'Add users to course')]")
-	private WebElement addUsersToCourseLink;
-
-	@FindBy(xpath = "//option[@value='222']")
-	private WebElement userListValue;
-
-	@FindBy(xpath = "//option[contains(text(),'(1) CoreJava')]")
-	private WebElement courseListValue;
-
-	@FindBy(xpath = "//button[@value='Add to the course(s) >>']")
-	private WebElement add2CourseButton;
-
-	// Methods for Add users to course Link
-
-	// Method to click "Add Users To Course" link
-	public void clickAddUsers2CourseLink() {
-		this.addUsersToCourseLink.click();
-	}
-
-	// Method to select a user value from listbox
-	public void selectUserListValue() {
-		this.userListValue.click();
-	}
-
-	// Method to select a course value from listbox
-	public void selectCourseListValue() {
-		this.courseListValue.click();
-	}
-
-	// Method to click on Add to course Button
-	public void clickadd2CourseBtn() {
-		this.add2CourseButton.click();
-	}
-
-	public void assertTC81_2() {
-		String Expected = "The selected users are subscribed to the selected course";
-		String Actual = driver.findElement(By.xpath("//div[@class='alert alert-success']")).getText();
-		Assert.assertEquals(Actual, Expected);
-		System.out.println("Actual is: " + Actual + " Expected is: " + Expected);
-	}
-
-	// **********************************************************************
-	// TC83
-	// WebElements for Add A User
-    // NOt needed again as they are mentioned in TC81 elements
-	// ***********************************************************************
-	
-	
 }

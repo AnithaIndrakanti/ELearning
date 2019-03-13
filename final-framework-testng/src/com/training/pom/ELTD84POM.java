@@ -94,6 +94,74 @@ public class ELTD84POM {
 	@FindBy(id = "introduction_text_intro_cmdUpdate")
 	WebElement saveIntroText;
 
+	// WebElement for courseDesc Icon
+	@FindBy(xpath = "//img[@id='toolimage_9445']")
+	private WebElement courseDescIcon;
+
+	// Webelement for Decsription ICON
+	@FindBy(xpath = "//img[@title='Description']")
+	private WebElement descicon;
+
+	// Webelement for title textbox
+	@FindBy(xpath = "//input[@id='course_description_title']")
+	private WebElement titleText1;
+
+	// WebElement for context testbox
+	@FindBy(xpath = "/html[1]/body[1]/p[1]")
+	private WebElement contextText1;
+
+	// webElemtn for save button
+	@FindBy(xpath = "//button[@id='course_description_submit']")
+	private WebElement saveBtn1;
+
+	// WebElement for Objective ICON;
+	@FindBy(xpath = "//img[@title='Objective'")
+	private WebElement objectiveIcon;
+
+	// Webelement for title textbox
+	@FindBy(xpath = "//input[@id='course_objective_title']")
+	private WebElement titleText2;
+
+	// WebElement for context testbox
+	@FindBy(xpath = "/html[1]/body[1]/p[1]")
+	private WebElement contextText2;
+
+	// webElemtn for save button
+	@FindBy(xpath = "//button[@id='course_objective_submit']")
+	private WebElement saveBtn2;
+
+	// webElement for Topics ICON
+	@FindBy(xpath = "//img[@title='Topic'")
+	private WebElement topicIcon;
+
+	// Webelement for title textbox
+	@FindBy(xpath = "//input[@id='course_topic_title']")
+	private WebElement titleText3;
+
+	// WebElement for context testbox
+	@FindBy(xpath = "/html[1]/body[1]/p[1]")
+	private WebElement contextText3;
+
+	// webElemtn for save button
+	@FindBy(xpath = "//button[@id='course_topic_submit']")
+	private WebElement saveBtn3;
+
+	// webElement for Project ICON
+	@FindBy(xpath = "//img[@title='Project'")
+	private WebElement projectIcon;
+
+	// Webelement for title textbox
+	@FindBy(xpath = "//input[@id='course_project_title']")
+	private WebElement titleText4;
+
+	// WebElement for context testbox
+	@FindBy(xpath = "/html[1]/body[1]/p[1]")
+	private WebElement contextText4;
+
+	// webElemtn for save button
+	@FindBy(xpath = "//button[@id='course_project_submit']")
+	private WebElement saveBtn4;
+
 	public void clickCreateCourse() {
 		this.CreateCourse.click();
 	}
@@ -131,7 +199,7 @@ public class ELTD84POM {
 	}
 
 	// Assert for TC84 Course is saved
-	public void assertTC81CourseSaved() {
+	public void assertTC84CourseSaved() {
 		String Expected84_1 = "Intro was updated";
 		String Actual84_1 = driver.findElement(By.xpath("//div[contains(text(),'Intro was updated')]")).getText();
 		Assert.assertEquals(Actual84_1, Expected84_1);
@@ -152,4 +220,75 @@ public class ELTD84POM {
 		this.displayText.sendKeys(displayText);
 	}
 
+//Method to click on course desc icon
+	public void clickCourseDesc() {
+		this.courseDescIcon.click();
+	}
+
+//method to click on desc icon small
+	public void clickDesc() {
+		this.descicon.click();
+	}
+
+	// method to enter title text
+	public void entertitletext(String titleText1) {
+		this.titleText1.clear();
+		this.titleText1.sendKeys(titleText1);
+	}
+
+	// method to enter context text
+	public void entercontexttext(String contextText1) {
+		this.contextText1.clear();
+		this.contextText1.sendKeys(contextText1);
+	}
+
+	// method to click on save button
+	public void saveButton() {
+		this.saveBtn1.click();
+	}
+
+	// method to click on obj icon small
+	public void clickObj() {
+		this.objectiveIcon.click();
+	}
+
+	// method to enter title text
+	public void entertitletext2(String titleText2) {
+		this.titleText2.clear();
+		this.titleText2.sendKeys(titleText2);
+	}
+
+	// method to enter context text
+	public void entercontexttext2(String contextText2) {
+		this.contextText2.clear();
+		this.contextText2.sendKeys(contextText2);
+	}
+
+	// method to click on save button
+	public void saveButton2() {
+		this.saveBtn2.click();
+	}
+	
+	// method to click on topic icon small
+		public void clicTopic() {
+			this.topicIcon.click();
+		}
+
+		// method to enter title text
+		public void entertitletext3(String titleText3) {
+			this.titleText3.clear();
+			this.titleText3.sendKeys(titleText3);
+		}
+
+		// method to enter context text
+		public void entercontexttext3(String contextText3) {
+			this.contextText3.clear();
+			this.contextText3.sendKeys(contextText3);
+		}
+
+		// method to click on save button
+		public void saveButton3() {
+			this.saveBtn3.click();
+		}
+	
 }

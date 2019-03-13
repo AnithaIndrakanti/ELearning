@@ -15,7 +15,7 @@ public class LoginPOM {
 	
 	@FindBy(id="login")
 	private WebElement userName; 
-	
+		
 	@FindBy(id="password")
 	private WebElement password;
 	
@@ -25,6 +25,10 @@ public class LoginPOM {
 	public void sendUserName(String userName) {
 		this.userName.clear();
 		this.userName.sendKeys(userName);
+	}
+	
+	public void textboxWidth() {
+		this.userName.getSize().getHeight();
 	}
 	
 	public void sendPassword(String password) {

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -57,11 +58,13 @@ public class LoginDBTest {
 	@Test(dataProvider = "db-inputs", dataProviderClass = LoginDataProviders.class)
 	public void loginDBTest(String userName, String password) {
 			
-		loginPOM.sendUserName(userName);
-		loginPOM.sendPassword(password);
+		loginPOM.sendUserName("admin");
+		loginPOM.sendPassword("admin@1234");
 		loginPOM.clickLoginBtn();
 		screenShot.captureScreenShot(userName);
 
+		Assert.assertEquals(userName, userName);
+		Assert.assertEquals(password,password);
 	}
 
 }
